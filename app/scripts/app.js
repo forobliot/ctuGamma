@@ -75,14 +75,12 @@ angular
   })
   .run(function($rootScope, $location, unimiService) {
 	  unimiService.getLoggedUser().success(function(data) {
-		console.log(data);
 		$rootScope.user = data;
 	  });
 	  $rootScope.goSearch = function() {
 		  var keywords = $rootScope.keywords || '';
 		  keywords = keywords.trim();
 		  if (keywords) {
-			  console.log('/quicksearch/' + keywords);
 			$location.path('/quicksearch/' + keywords);
 		  }
 	  };

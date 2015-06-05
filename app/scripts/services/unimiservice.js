@@ -8,10 +8,12 @@
  * Service in the unimiAppApp.
  */
 angular.module('unimiAppApp')
-  .factory('authfilter', function($q, $window, $location) {
+  .factory('authfilter', function($q, $window, $location, $rootScope) {
 	  return {
 		  response: function(response) {
-			console.log(response.headers('X-Nouser'));
+			if (response.headers('X-Nouser') === 'true') {
+				delete($rootScope.user);
+			}
 			return response;
 		  },
 		  responseError: function(response) {
