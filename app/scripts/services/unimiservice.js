@@ -1,5 +1,8 @@
 'use strict';
 
+//var restUrl = 'http://ariel.ariel.ctu.unimi.it/unimirest/unimi/';
+var restUrl = 'http://ale.unimi.it/unimirest/unimi/';
+
 /**
  * @ngdoc service
  * @name unimiAppApp.unimiService
@@ -8,26 +11,26 @@
  * Service in the unimiAppApp.
  */
 angular.module('unimiAppApp')
-  .factory('authfilter', function($q, $window, $location, $rootScope) {
-	  return {
-		  response: function(response) {
-			if (response.headers('X-Nouser') === 'true') {
-				delete($rootScope.user);
-			}
-			return response;
-		  },
-		  responseError: function(response) {
-			if (response.status === 401) {
-				$window.location.href = 'https://www.elearning.unimi.it/authentication/portal/login.aspx?c=true&url=' + $location.absUrl();
-			}
-			return $q.reject(response);
-		  }
-	  };
-  })
+  // .factory('authfilter', function($q, $window, $location, $rootScope) {
+	  // return {
+		  // response: function(response) {
+			// if (response.headers('X-Nouser') === 'true') {
+				// delete($rootScope.token);
+			// }
+			// return response;
+		  // },
+		  // responseError: function(response) {
+			// if (response.status === 401) {
+				// $window.location.href = 'https://www.elearning.unimi.it/authentication/portal/login.aspx?c=true&url=' + $location.absUrl();
+			// }
+			// return $q.reject(response);
+		  // }
+	  // };
+  // })
   .service('unimiService', function ($http) {
     var that = this;
 	
-	this.restUrl = 'http://ale.unimi.it/unimiRest/unimi/';
+	this.restUrl = restUrl;
 	this.currentYear = '2015';
 	
 	this.isOnlyActive = true;

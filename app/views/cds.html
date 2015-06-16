@@ -46,7 +46,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="af in of.AFList | filter:showAriel">
+						<tr ng-repeat="af in of.AFList | filter:showAriel | orderBy:'Description'">
 							<td class="col-md-1"><span class="label label-info pull-right">{{ af.Key }}</span></td>
 							<td class="col-md-11">
 								<p>{{ af.Description }}</p>

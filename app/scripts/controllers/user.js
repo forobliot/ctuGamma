@@ -8,9 +8,15 @@
  * Controller of the unimiAppApp
  */
 angular.module('unimiAppApp')
-  .controller('UserCtrl', function ($scope, unimiService) {
+  .controller('UserCtrl', function ($scope, $rootScope, unimiService) {
 	  $scope.mode = 'w4';
       $scope.loading = false;
+	  
+	  // if ($rootScope.token) {
+		// $scope.userEmail = $rootScope.token.Login;
+		// $scope.userCds = $rootScope.token.User.CdSList[0].AcademicCourse;
+		// $scope.userYear = $rootScope.token.User.CdSList[0].FirstRegistrationYear;  
+	  // }
 	  
 	  $scope.getData = function() {
 			$scope.of = null;

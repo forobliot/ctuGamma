@@ -22,7 +22,7 @@ angular
     // non vengono inviati i cookie con le richieste $http
     // http://stackoverflow.com/questions/17064791/http-doesnt-send-cookie-in-requests
     $httpProvider.defaults.withCredentials = true;
-	$httpProvider.interceptors.push('authfilter');
+//	$httpProvider.interceptors.push('authfilter');
 	
     $routeProvider
       .when('/', {
@@ -74,8 +74,11 @@ angular
       });
   })
   .run(function($rootScope, $location, unimiService) {
+	  $rootScope.loadingUser = true;
+	  $rootScope.logoutUrl = 'https://www.elearning.unimi.it/authentication/portal/logout.aspx?backurl=' + $location.absUrl();
 	  unimiService.getLoggedUser().success(function(data) {
-		$rootScope.user = data;
+		$rootScope.token = data;
+		$rootScope.loadingUser = false;
 	  });
 	  $rootScope.goSearch = function() {
 		  var keywords = $rootScope.keywords || '';
