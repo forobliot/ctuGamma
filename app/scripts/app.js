@@ -76,10 +76,10 @@ angular
   .run(function($rootScope, $location, unimiService) {
 	  $rootScope.loadingUser = true;
 	  $rootScope.logoutUrl = 'https://www.elearning.unimi.it/authentication/portal/logout.aspx?backurl=' + $location.absUrl();
-	  unimiService.getLoggedUser().success(function(data) {
-		$rootScope.token = data;
-		$rootScope.loadingUser = false;
-	  });
+	  // unimiService.getLoggedUser().success(function(data) {
+		// $rootScope.token = data;
+		// $rootScope.loadingUser = false;
+	  // });
 	  $rootScope.goSearch = function() {
 		  var keywords = $rootScope.keywords || '';
 		  keywords = keywords.trim();
